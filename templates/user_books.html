@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href={% static 'css/home.css' %}>
+    <link rel="stylesheet" href={% static 'css/user_books.css' %}>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script src={% static 'js/user_books.js' %}></script>
+    {% block head%}
+    {% endblock%}
+    <title>Cairo Univeristy Library</title>
+
+</head>
+
+<body>
+    <div class="menu">
+        <h1 class='main-head'>Library</h1>
+        <ul>
+            <li class="special-li"><a href="{% url 'user_Interface' %}" > Home Page</a></li>
+            <li class='parent'>
+                <button class="main-btn"></button>
+                <div class='drop-content'>
+                    <a href="{% url 'profile' %}">my profile</a>
+                    <form action="/logout">
+                        <a><input type="submit" value="logout" class="log-out-button"></a>
+                    </form>
+                </div>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="main-section">
+        {% csrf_token %}
+        <div class="essential-titles">
+            <h2>Your borrowed books</h2>
+            {% block addbtn %}
+            {% endblock %}
+        </div>
+        <div class="div-arrow" id="left-arrow"><i class="arrow left"></i></div>
+        <div class="container">
+            {% for book in userBooks %}
+            <div class="main-book" id="{{ book.bookId.ISBN }}">
+                <div>
+                    <img src="{{book.bookId.img.url}}" alt="" class="book-img">
+                    <h3>{{book.bookId.name}}</h3>
+                    <p>by {{book.bookId.author_name}}</p>
+                    <p>return date: <span id="return_{{ book.bookId.ISBN }}">{{ book.DateReturn }}</span> </p>
+                    <button class="btn" onclick="returnBook({{ book.bookId.pk }},{{ book.bookId.ISBN }})">return</button>
+                    <button class="btn" onclick="extend({{ book.bookId.pk }},{{ book.bookId.ISBN }},{{ book.bookId.extended}})">extend 1 week</button>
+                    {% comment %} <p>Available copies <span id="{{ book.bookId.ISBN }}_counter">{{ book.bookId.counter }}</span></p> {% endcomment %}
+                    
+                </div>
+                
+            </div>
+            {% endfor %}
+        </div>
+        <div class="div-arrow" id="right-arrow"><i class="arrow right"></i></div>
+    </div>
+    <script src= {% static 'js/home.js' %}></script>   
+    <script src= {% static 'js/user_books.js' %}></script>   
+    {% block content %}
+    {% endblock %}
+</body>
+
+
+</html>

@@ -1,0 +1,27 @@
+.essential-titles{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 2%;
+}
+
+.add-book-btn{
+    background-color: antiquewhite;
+    border: none;
+    border-radius: 5%;
+    width: 10%;
+    height: 40px;
+}   
+
+.main-book a{
+    float: right;
+    width: 15%;
+    padding: 5px;
+    background-color: antiquewhite;
+    text-decoration: none;
+    text-align: center;
+    margin-right: 10%;
+    color: black;
+}
+.main-book a:hover{
+    background-color:rgb(156, 23, 23);
+}

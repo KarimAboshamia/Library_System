@@ -1,0 +1,132 @@
+*:focus{
+    outline: none;
+}
+
+body{
+    background-image: url('../img/will-van-wingerden-dsvJgiBJTOs-unsplash.jpg');
+    background-size: cover;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.main-head{
+    margin-left: 5%;
+}
+
+.menu
+{
+    padding-top: 2%;
+    padding-bottom: 1%;
+    padding-right: 10%;
+    text-align: center;
+    background-color: antiquewhite;
+    flex-direction:row ;
+    display:flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.menu ul 
+{
+    position: relative;
+    bottom: 10px;
+}
+
+.menu ul li
+{
+    display: inline-block;
+    list-style: none;
+}
+
+.special-li{
+    position: relative;
+    top:9px;
+}
+
+ul li a 
+{
+    text-decoration:none;
+    padding-right: 20px;
+    font-size:larger;
+    text-align: center;
+    font-family: Arial;
+    color: rgb(7, 8, 8);
+}
+
+.background
+{
+    background-image: url('../img/Home1.jpg');
+    height: 30vh;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+}
+
+/*Nav-bar dropdown*/
+.main-btn {
+    padding-left: 33px;
+    font-size: 16px;
+    border: none;
+}
+  
+.parent {
+    background-image: url('../img/icons8-admin-settings-male-32.png');
+    height: 35px;
+    position: relative;
+    display: inline-block;
+}
+
+.drop-content {
+display: none;
+position: absolute;
+background-color: #f1f1f1;
+min-width: 160px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+z-index: 1;
+}
+
+.drop-content a{
+color: black;
+padding: 12px 16px;
+text-decoration: none;
+display: block;
+}
+
+.log-out-button{
+    background-color: rgb(156, 23, 23, 0);
+    border: none;
+    color: black;
+    height: 20px;
+    display: block;
+    margin-left: 30%;
+    font-size: 0.9em;
+}
+.drop-content a:hover, button:hover {background-color: rgb(156, 23, 23);}
+.parent:hover .drop-content {display: block;}
+.parent:hover .main-btn {background-color: #3e8e41;}
+
+
+.form{
+    position: relative;
+    top: 150px;
+    border-radius: 20px;
+    text-align: center;
+    background-color: rgba(255,255,255,0.6);
+    width: 30%;
+    margin: auto;
+}
+
+.form form{
+    padding: 20px;
+}
+
+.form form input{
+    width: 60%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5%;
+    border: none;
+}

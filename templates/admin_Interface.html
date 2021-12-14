@@ -1,0 +1,30 @@
+{% extends "home.html" %}
+{% load static %}
+
+
+{% block head%}
+<link rel="stylesheet" href={% static 'css/admin_Interface.css' %}>
+{% endblock %}
+
+{% block addbtn %}
+<button class="add-book-btn" onclick="location.href={% url 'addbook' %};">Add Book</button>
+{% endblock %}
+            
+{% block myBooks%}
+<li class="special-li"><a href="{% url 'admin_Interface' %}" > Home Page</a></li>
+{%endblock%}
+
+{% block edit %}
+    <a href="{% url 'book_update' book.id %}">Edit</a>
+{% endblock %}
+
+{% block content %}
+
+   
+    
+    
+
+    <script src= {% static 'js/admin.js' %}></script>
+{% endblock %}
+
+

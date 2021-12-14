@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href={% static 'css/welcome.css' %}>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <title>Cairo Universty Library</title>
+</head>
+<body>
+
+    <div class ='auth' id='main-div' id='form1'>
+        <p>{{val}}</p>
+        <button class="animate__animated animate__bounceInDown" id='login'>Login</button>
+        <button class="animate__animated animate__bounceInUp" id='SignUp'>SignUp</button>
+    </div>
+
+    <div class='auth loginDiv' id='login-div'>
+        <form method="POST" autocomplete="off" id='form1'>
+            {% csrf_token %}
+            <p>{{val}}</p>
+            <input type='text' name="email" placeholder="email" id='login-email'></input><br>
+            <input type='password' name='password' placeholder="password" id='login-password'></input><br>
+            <button id='login-form'>Login</button>
+            <button id='special-button' type="button">Sign Up</button>
+        </form>
+
+    </div>
+
+    <div class='auth signUpDiv' id='signup-div'>
+        <form method="POST" autocomplete="off" id='form2'>
+            {% csrf_token %}
+            <input type='text' name="name" placeholder="name" id='signup-name'></input><br>
+            <input type='text' name="email" placeholder="email" id='signup-email'></input><br>
+            <input type='password' name='password' placeholder="password" id='signup-password'></input><br>
+            <input type='password' name='confirm_password' placeholder="confirm password" id='signup-confirm-password'></input><br>
+            <input type='text' name="college" placeholder="college" id='signup-college'></input><br>
+            <input type='text' name="ID" placeholder="National ID" id='signup-id'></input><br>
+            <input type='tel' name="phone" placeholder="Phone Number" id='signup-phone'></input><br>
+            <button id='signup-form'>Sign Up</button>
+        </form>
+
+    </div>
+    <script src= {% static 'js/welcome.js' %}></script>    
+</body>
+</html>

@@ -1,0 +1,21 @@
+{% extends "home.html" %}
+{% load static %}
+
+
+{% block head %}
+<link rel="stylesheet" href={% static 'css/user_Interface.css' %}>
+<script src={% static 'js/user_Interface.js' %}></script>
+<script>
+        let userEmail = "{{ request.user.email }}"
+    </script>
+{% endblock %}
+
+
+{% block myBooks%}
+<li class="special-li"><a href="{% url 'user_books' %}" > My Books</a></li>
+{%endblock%}
+
+{% block borrow %}
+    <button class="borrow" onclick="borrowBook({{ book.id }},{{ book.ISBN }})">Borrow</button>
+    
+{% endblock %}

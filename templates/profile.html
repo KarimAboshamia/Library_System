@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href={% static 'css/profile.css' %}>
+    <title>Cairo University Library</title>
+</head>
+<body>
+    <div class="menu">
+        <h1 class='main-head'>Library</h1>
+        <ul>            
+            {% if request.user.is_superuser %}
+            <li class="special-li"><a href="{% url 'admin_Interface' %}" > Home Page</a></li>
+            {% else %}         
+            <li class="special-li"><a href="{% url 'user_Interface' %}" > Home Page</a></li>
+            {%endif%}
+            <li class='parent'>
+                <button class="main-btn"></button>
+                <div class='drop-content'>
+                    <a href="{% url 'profile' %}">my profile</a>
+                    <form action="/logout">
+                        <a><input type="submit" value="logout" class="log-out-button"></a>
+                    </form>
+                </div>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="main-div">
+        <div class="inside">
+            <h1>{{ user.name }}'s Profile</h1>    
+            <h3> <span>Name:</span> {{ user.name }}</h3>
+            <h3><span>Email:</span> {{ user.email }}</h3>
+            <h3><span>College:</span> {{ user.college }}</h3>
+            <h3><span>Phone:</span> {{ user.phone }}</h3>
+            <button onclick="location.href={% url 'profile_update' %};" class="very-btn">Edit</button>
+        </div>
+        
+    </div>
+
+</body>
+</html>

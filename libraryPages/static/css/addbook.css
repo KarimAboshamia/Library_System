@@ -1,0 +1,8 @@
+*:focus{
+    outline: none;
+}
+
+#div_id_img .requiredField{
+    position: relative;
+    top: 10px;   
+}

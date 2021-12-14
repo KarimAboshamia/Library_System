@@ -1,0 +1,63 @@
+*:focus{
+    outline: none;
+}
+body {
+    background-image: url('../img/back2.jpg');
+    background-size: cover;
+}
+
+.auth{
+    background-color: rgba(255, 255, 255, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2%;
+    flex-direction: column;
+    width: 25%;
+    height: 450px;
+    position: absolute;
+    top: 20%;
+    left: 39%;
+}
+
+#login-div{
+    display: none;
+}
+
+#signup-div{
+    display: none;
+}
+
+button{
+    background-color: #222831; 
+    color: #5F939A;
+    font-size: 1.2em;
+    width: 40%;
+    height: 12%;
+    border: none;
+    border-radius: 5% ;
+    margin-bottom: 15%;
+}
+
+#special-button{
+    background-color: rgba(255, 255, 255, 0);
+    color: #0000EE;
+    font-size: 0.9em;
+    width: 65px;
+}
+
+#login-form{
+    height: 20%;
+}
+
+
+
+input{
+    width: 18em;
+    height: 2.2em;
+    margin-bottom: 5%;
+}
+
+a:active{
+    color: black;
+}

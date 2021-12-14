@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href={% static 'css/home.css' %}>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    {% block head%}
+    {% endblock%}
+    <title>Cairo Univeristy Library</title>
+
+</head>
+
+<body>
+    <div class="menu">
+        <h1 class='main-head'>Library</h1>
+        <ul>       
+            {% block myBooks%}
+            {% endblock %}
+            <li class='parent'>
+                <button class="main-btn"></button>
+                <div class='drop-content'>
+                    <a href="{% url 'profile' %}">my profile</a>
+                    <form action="/logout">
+                        <a><input type="submit" value="logout" class="log-out-button"></a>
+                    </form>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="filter">
+        <form action="/action_page.php">
+            <select name="category" id="category" class='filter-section'>
+                <option selected disabled>Category</option>
+                <option value="">All</option>
+                {% for book in book_Type %}
+                <option value="{{book.type}}">{{book.type}}</option>
+                {% endfor %}
+            </select>
+            <select name="author" id="author" class='filter-section'>
+                <option selected disabled>Author</option>
+                <option value="">All</option>
+                {% for book in book_Author %}
+                <option value="{{book.author_name}}">{{book.author_name}}</option>
+                {% endfor %}
+            </select>
+            <select name="ISBN" id="ISBN" class='filter-section'>
+                <option selected disabled>ISBN</option>
+                <option value="">All</option>
+                {% for book in books %}
+                {% ifchanged %}
+                <option value="{{book.ISBN}}">{{book.ISBN}}</option>
+                {% endifchanged %}
+
+                {% endfor %}
+            </select>
+            <select name="publication_year" id="publication_year" class='filter-section'>
+                <option selected disabled>Publication year</option>
+                <option value="">All</option>
+                {% for book in book_Date%}
+                <option value="{{book.publication_year}}">{{book.publication_year}}</option>
+                {% endfor %}
+            </select>                    
+            <input type="button" value="Submit" id="submit" class="filter-submit"> 
+          </form>
+
+    </div>
+    
+    <div class="main-section">
+        {% csrf_token %}
+        <div class="essential-titles">
+            <h2>Available books</h2>
+            {% block addbtn %}
+            {% endblock %}
+        </div>
+        <div class="div-arrow" id="left-arrow"><i class="arrow left"></i></div>
+        <div class="container">
+            {% for book in books %}
+            <div class="main-book" id="{{ book.ISBN }}">
+                <div>
+                    <img src="{{book.img.url}}" alt="" class="book-img">
+                    <h3>{{book.name}}</h3>
+                    <p>by {{book.author_name}}</p>
+                    <p>Available copies <span id="{{ book.ISBN }}_counter">{{ book.counter }}</span></p>
+                    {% block borrow %}
+                    {% endblock %}
+                </div>
+                {% block edit %}
+                {% endblock %}
+            </div>
+            {% endfor %}
+        </div>
+        <div class="div-arrow" id="right-arrow"><i class="arrow right"></i></div>
+    </div>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+    <script src= {% static 'js/home.js' %}></script>    
+    {% block content %}
+    {% endblock %}
+</body>
+
+
+</html>
